@@ -1,4 +1,3 @@
-ecommerce-igor-rodrigues
 import React from 'react';
 import './App.css';
 import  CardProdutos  from './components/cardProdutos';
@@ -10,7 +9,6 @@ import camiseta5 from "./img/produtos/camiseta5.jpg"
 import camiseta6 from "./img/produtos/camiseta6.jpg"
 
 import React from "react";
-import "./App.css";
 import Header from "./componentes/Header/Header";
 
 
@@ -68,11 +66,10 @@ class App  extends React.Component{
     })
   return (
     <div className="App">
- ecommerce-igor-rodrigues
-      <div className='containerProdutos'>{usuarioComponentes}</div>
-
+      
       <Header />
-master
+      <div className='containerProdutos'>{usuarioComponentes}></div>
+     
     </div>
   );
   }

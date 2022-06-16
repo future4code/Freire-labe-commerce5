@@ -24,15 +24,19 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.containerProdutos{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:5px;
+ padding: 10px 10px ;
 }
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .containerProdutos{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 10px;
+
+  }
+  }

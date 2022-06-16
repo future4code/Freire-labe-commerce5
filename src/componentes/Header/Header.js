@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import iconeCarrinho from "../../img/icone-carrinho.png";
+import Carrinho from "../Carrinho/Carrinho";
 
 const Container = styled.div`
   background: url("https://i.pinimg.com/originals/85/15/d5/8515d58fac0934d5ee88fc83d72de7af.jpg");
@@ -10,20 +10,7 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   line-height: 1.3;
-`;
-
-const IconeCarrinho = styled.img`
-  width: 80px;
-`;
-
-const BotaoCarrinho = styled.button`
-  background-color: #ffffff00;
-  border: none;
-  color: #ffffff;
-  font-weight: bold;
-  &:hover {
-    cursor: pointer;
-  }
+  box-sizing: border-box;
 `;
 
 class Header extends React.Component {
@@ -31,10 +18,7 @@ class Header extends React.Component {
     return (
       <Container>
         <h1>NomeLoja</h1>
-        <BotaoCarrinho>
-          <IconeCarrinho src={iconeCarrinho} alt="Icone do Carrinho" />
-          <p>Carrinho</p>
-        </BotaoCarrinho>
+        <Carrinho />
       </Container>
     );
   }

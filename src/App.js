@@ -19,37 +19,37 @@ class App  extends React.Component{
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 69,
       foto: camiseta1,
     },
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 89,
       foto: camiseta2,
     },
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 69,
       foto: camiseta3,
     },
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 119,
       foto: camiseta4,
     },
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 119,
       foto: camiseta5,
     },
     {
       id: Date.now(),
       nome: 'Camiseta',
-      preco: 10,
+      preco: 89,
       foto: camiseta6,
     },
   ]
@@ -70,15 +70,6 @@ class App  extends React.Component{
 
       <Header />
       <div className='containerProdutos'>{usuarioComponentes}</div>
-
-   
-
-
-      
-      <Header />
-      <div className='containerProdutos'>{usuarioComponentes}></div>
-     
-
     </div>
   );
   }

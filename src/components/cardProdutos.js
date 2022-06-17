@@ -5,10 +5,11 @@ const ContainerCard = styled.div`
     display: grid;
     justify-items: center;
     width: 25vw;
-    height: 40vh;
+    height: 48vh;
     padding:20px;
     @media screen and (min-device-width : 320px) and (max-device-width : 480px){
-      justify-content: center
+      justify-content: center;
+      height: 30vh;
     }
 `
 const Texto = styled.p`

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerCard = styled.div`
-
     display: grid;
     justify-items: center;
     width: 25vw;
@@ -10,19 +9,9 @@ const ContainerCard = styled.div`
     padding:20px;
     @media screen and (min-device-width : 320px) and (max-device-width : 480px){
       justify-content: center;
-      height: 30vh;
-    }
+      height: 33vh;
+    };
 `
-
-  display: grid;
-  justify-items: center;
-  width: 25vw;
-  height: 40vh;
-  padding: 20px;
-  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    justify-content: center;
-  }
-`;
 
 const Texto = styled.p`
   margin-bottom: 10px;

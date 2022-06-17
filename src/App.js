@@ -135,68 +135,9 @@ class App extends React.Component {
         />
 
         <div className='containerProdutos'>{usuarioComponentes}</div>
-        <Footer/>
+        <Footer />
       </div>
     );
-
-     produtos:[
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 69,
-      foto: camiseta1,
-    },
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 89,
-      foto: camiseta2,
-    },
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 69,
-      foto: camiseta3,
-    },
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 119,
-      foto: camiseta4,
-    },
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 119,
-      foto: camiseta5,
-    },
-    {
-      id: Date.now(),
-      nome: 'Camiseta',
-      preco: 89,
-      foto: camiseta6,
-    },
-  ]
-}
-  render(){
-    const usuarioComponentes = this.state.produtos.map((produto) => 
-    {console.log(produto)
-       
-      return<CardProdutos
-          id={produto.id}
-          nome={produto.nome}
-          preco={produto.preco}
-          foto={produto.foto} 
-        /> 
-    })
-  return (
-    <div className="App">
-
-      <Header />
-      <div className='containerProdutos'>{usuarioComponentes}</div>
-    </div>
-  );
-
   }
 }
 export default App

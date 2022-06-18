@@ -15,6 +15,12 @@ const ContainerCard = styled.div`
 const Imagem = styled.img`
   width: 50%;
 `;
+
+const Texto = styled.p`
+  margin-bottom: 10px;
+  font-size: 1.5em;
+`
+
 const BotaoAdc = styled.button`
   color: white;
   border-radius: 24px;
@@ -24,8 +30,16 @@ const BotaoAdc = styled.button`
   width: 150px;
   height: 30px;
   &:hover {
+  transform: scale(1.1);
+  box-shadow: 10px -1px 60px #168fd0;
+  box-shadow: -3px -1px 20px #2a617e;
+  border: none;
+  width: 150px;
+  height: 30px;
+  &:hover {
     transform: scale(1.1);
     box-shadow: 10px -1px 60px #168fd0;
+    cursor: pointer;
   }
 `;
 
@@ -45,7 +59,6 @@ class CardProdutos extends React.Component {
           <BotaoAdc onClick={this.props.botao}>
             Adicionar ao carrinho
           </BotaoAdc>
-        </div>
       </ContainerCard>
     );
   }

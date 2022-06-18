@@ -26,37 +26,39 @@ const SideBar = styled.div`
     }
   }};
   position: absolute;
-  top: 100px;
+  top: 110px;
+  width: 300px;
+  height: 400px;
+  background-color: #000000aa;
+  border-radius: 8px;
+  @media (max-width: 1200px) {
+    right: 0px;
+  };
 `;
 
+const ItenSidebar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+`
+
 class Carrinho extends React.Component {
-  state = {
-    quantidade: 1,
-    sidebar: false,
-  };
-
-  adicionarCarrinho = () => {
-    this.setState({ quantidade: this.state.quantidade + 1 });
-  };
-
-  removerCarrinho = () => {
-    this.setState({ quantidade: this.state.quantidade - 1 });
-  };
-
-  abreListaDeCompras = () => {
-    this.setState({ sidebar: !this.state.sidebar });
-  };
+  
 
   render() {
     return (
       <div>
-        <BotaoCarrinho onClick={this.abreListaDeCompras}>
+        <BotaoCarrinho onClick={this.props.abreLista}>
           <IconeCarrinho src={iconeCarrinho} alt="Icone do Carrinho" />
-          <h3>Carrinho</h3>
+          <h3>Carrinho {this.props.quantidade}</h3>
         </BotaoCarrinho>
-        <SideBar tipo={this.state.sidebar}>
-          {this.state.quantidade > 0 ? (
-            <button onClick={this.removerCarrinho}>Remover do Carrinho</button>
+        <SideBar tipo={this.props.sideBar}>
+          {this.props.quantidade > 0 ? (
+            <ItenSidebar>
+              <p>{this.props.quantidade}x</p>
+              <p>{this.props.nomeDoProduto}</p>
+              <button onClick={this.props.removerDoCarrinho}>Remover do Carrinho</button>
+            </ItenSidebar>
           ) : (
             ""
           )}

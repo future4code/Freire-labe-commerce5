@@ -33,7 +33,7 @@ class Footer extends React.Component {
                 <img src={Face} />
                 <img src={Twitter} />
             </RedesSociais>
-          <h5>© 2022 - NossaLoja Co.® Inc. Todos os direitos reservados.</h5>
+          <h5>© 2022 - LostinSpace Co.® Inc. Todos os direitos reservados.</h5>
         </ContainerFooter>
       );
     }

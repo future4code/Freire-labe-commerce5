@@ -43,8 +43,8 @@ class CardProdutos extends React.Component {
       <ContainerCard>
         <Imagem src={this.props.foto} alt="" />
         <div>
-          <p>{this.props.nome}</p>
-          <p>R${this.props.preco},00</p>
+          <Texto>{this.props.nome}</Texto>
+          <Texto>R${this.props.preco},00</Texto>
           <BotaoAdc
             onClick={() =>
               this.props.botao(

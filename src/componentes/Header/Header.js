@@ -8,16 +8,17 @@ const Container = styled.div`
   color: #f2f2f2;
   padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   line-height: 1.3;
   box-sizing: border-box;
  `;
 
 const ImagemLogo = styled.img`
-  width: 10%;
+  width: 30%;
   @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
     width: 40%;
+    margin-right: 150px;
   }
 `;
 

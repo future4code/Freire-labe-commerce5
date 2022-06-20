@@ -84,8 +84,6 @@ class App extends React.Component {
       (produto) => {
         if (produto.id === id) {
           return produto;
-        }else{
-          return produto
         }
       }
     );

@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./App.css";
 import styled from "styled-components";
@@ -11,8 +10,8 @@ import camiseta5 from "./img/produtos/camiseta5.jpg";
 import camiseta6 from "./img/produtos/camiseta6.jpg";
 import Header from "./componentes/Header/Header";
 import Carrinho from "./componentes/Carrinho/Carrinho";
-import { Filtros } from './components/Filtros';
-import Footer from './componentes/Footer/Footer';
+import { Filtros } from "./components/Filtros";
+import Footer from "./componentes/Footer/Footer";
 
 const ContainerHeader = styled.div`
   background: url("https://i.pinimg.com/originals/85/15/d5/8515d58fac0934d5ee88fc83d72de7af.jpg");
@@ -27,209 +26,154 @@ const ContainerHeader = styled.div`
 
 class App extends React.Component {
   state = {
-
     produtos: [
       {
         id: 1,
-        nome: 'Astronauta no balanço',
+        nome: "Astronauta no balanço",
         preco: 69,
         foto: camiseta1,
-        
       },
       {
         id: 2,
-        nome: 'Nasa basica',
+        nome: "Nasa basica",
         preco: 79,
         foto: camiseta2,
-        
       },
       {
-        id:3,
+        id: 3,
         nome: "camisa",
         preco: 59,
         foto: camiseta3,
       },
       {
         id: 4,
-        nome: 'Balões e astronauta',
+        nome: "Balões e astronauta",
         preco: 89,
         foto: camiseta4,
       },
       {
         id: 5,
-        nome: 'Coração de astronauta',
+        nome: "Coração de astronauta",
         preco: 99,
         foto: camiseta5,
       },
       {
         id: 6,
-        nome: 'Planetas',
+        nome: "Planetas",
         preco: 49,
         foto: camiseta6,
       },
-      
     ],
-    cart:[],
+    cart: [],
     query: "",
     precoMinimo: "",
     precoMaximo: "",
     parametroNome: "",
     ordenar: 1,
     sidebar: false,
-    quantidade: 1,
-    
   };
-    
 
   abreListaDeCompras = () => {
     this.setState({ sidebar: !this.state.sidebar });
-  };   
+  };
 
+  adicionarCarrinho = (id) => {
+    const produtos = this.state.produtos;
 
-
-//criei objeto modifiquei estado 
-// adicionarCarrinho = (id,nome,preco,foto) => {  
-//    const item ={
-//     id,nome,preco,foto 
-//   }
-//   const novoCarrinho = [...this.state.cart,item]
-//   this.setState({ quantidade: this.state.quantidade + 1 })
-//   this.setState({cart: novoCarrinho})
-//   console.log(this.state.cart)
- 
-//   };
-
-
-
-
-// adicionarCarrinho(id){
-//   adicionarCarrinho = (id,nome,preco,foto) => {  
-//        const item ={
-//         id,nome,preco,foto 
-//       }
-//       const novoCarrinho = [...this.state.cart,item]
-//       this.setState({ quantidade: this.state.quantidade + 1 })
-//       this.setState({cart: novoCarrinho})
-//       console.log(this.state.cart)
-     
-//       };
-// }
-
-
-
-
-adicionarCarrinho = (id) => {
-  const produtos = this.state.produtos;
-
-  const produtoFiltradoParaAdicionarAoCarrinho = produtos.filter((produto) => {
-    if (produto.id === id) {
-      return produto
-    }
-  });
-
-  const [novoProdutoCarrinho] = produtoFiltradoParaAdicionarAoCarrinho
-
-  const jaExisteProdutoNoCarrinho = this.state.cart.find((produto) => {
-    return produto.id === novoProdutoCarrinho.id
-  });
-
-  if (jaExisteProdutoNoCarrinho) {
-    const novoCarrinhoComQuantidadeAtualizada = this.state.cart.map((produto) => {
-      if (jaExisteProdutoNoCarrinho.id === produto.id) {
-        return {
-          ...produto,
-          quantidade: produto.quantidade + 1
+    const produtoFiltradoParaAdicionarAoCarrinho = produtos.filter(
+      (produto) => {
+        if (produto.id === id) {
+          return produto;
         }
-      } else {
-        return produto
       }
-    })
+    );
+
+    const [novoProdutoCarrinho] = produtoFiltradoParaAdicionarAoCarrinho;
+
+    const jaExisteProdutoNoCarrinho = this.state.cart.find((produto) => {
+      return produto.id === novoProdutoCarrinho.id;
+    });
+
+    if (jaExisteProdutoNoCarrinho) {
+      const novoCarrinhoComQuantidadeAtualizada = this.state.cart.map(
+        (produto) => {
+          if (jaExisteProdutoNoCarrinho.id === produto.id) {
+            return {
+              ...produto,
+              quantidade: produto.quantidade + 1,
+            };
+          } else {
+            return produto;
+          }
+        }
+      );
+
+      this.setState({
+        cart: [...novoCarrinhoComQuantidadeAtualizada],
+      });
+    } else {
+      this.setState({
+        cart: [...this.state.cart, { ...novoProdutoCarrinho, quantidade: 1 }],
+      });
+    }
+  };
+
+  removerCarrinho = (id) => {
+    const { cart } = this.state;
+
+    const itemToRemove = cart.find((produto) => produto.id === id);
+
+    let newCart = [];
+
+    if (itemToRemove.quantidade > 1) {
+      newCart = cart.map((produto) => {
+        if (produto.quantidade > 1) {
+          return { ...produto, quantidade: produto.quantidade - 1 };
+        } else {
+          return produto;
+        }
+      });
+    } else {
+      newCart = cart.filter((produto) => {
+        return produto.id !== id;
+      });
+    }
 
     this.setState({
-      cart: [
-        ...novoCarrinhoComQuantidadeAtualizada,
-      ],
-      
-    })
-  } else {
-    this.setState({
-      cart: [
-        ...this.state.cart,
-        { ...novoProdutoCarrinho, quantidade: 1 }
-       
-      ],
-      
-    })
-    
-  }
-}
+      cart: newCart,
+    });
+  };
 
-removerCarrinho = (id) => {
-  const { cart } = this.state
+  getTotalValue = () => {
+    const { cart } = this.state;
+    let totalValue = 0;
 
-  const itemToRemove = cart.find((produto) => produto.id === id);
+    cart.map((produto) => {
+      return (totalValue = totalValue + produto.preco * produto.quantidade);
+    });
 
-  let newCart = [];
+    return totalValue.toFixed(2).replace(".", ",");
+  };
 
-  if (itemToRemove.quantidade > 1) {
-    newCart = cart.map((produto) => {
-      if (produto.quantidade > 1) {
-        return { ...produto, quantidade: produto.quantidade - 1 }
-      } else {
-        return produto
-      }
-    })
-  } else {
-    newCart = cart.filter((produto) => {
-      return produto.id !== id
-    })
-  }
-
-  this.setState({
-    cart: newCart
-  })
-}
-
-
-getTotalValue = () => {
-  const { cart } = this.state
-  let totalValue = 0
-
-  cart.map((produto) => {
-    return totalValue = totalValue + (produto.preco* produto.quantidade)
-  })
-
-  return totalValue.toFixed(2).replace(".", ",")
-}
-
-
-
-
-
-   
-  // removerCarrinho = () => {
-  //   this.setState({ quantidade: this.state.quantidade - 1 });
-  // };
-  
-    listaAtualizada = (ev) => {
-    this.setState({ query: ev.target.value })
-  }
+  listaAtualizada = (ev) => {
+    this.setState({ query: ev.target.value });
+  };
 
   listaPrecoMinimo = (ev) => {
-    this.setState({ precoMinimo: ev.target.value })
-  }
+    this.setState({ precoMinimo: ev.target.value });
+  };
 
   listaPrecoMaximo = (ev) => {
-    this.setState({ precoMaximo: ev.target.value })
-  }
+    this.setState({ precoMaximo: ev.target.value });
+  };
 
   listaParametroNome = (ev) => {
-    this.setState({ parametroNome: ev.target.value })
-  }
+    this.setState({ parametroNome: ev.target.value });
+  };
 
   listaOrdenada = (ev) => {
-    this.setState({ ordenar: ev.target.value })
-  }
+    this.setState({ ordenar: ev.target.value });
+  };
 
   render() {
     const cardComponentes = this.state.produtos.map((produto) => {
@@ -240,90 +184,56 @@ getTotalValue = () => {
           preco={produto.preco}
           foto={produto.foto}
           botao={this.adicionarCarrinho}
-        /> 
-        
-        
+        />
       );
-      
     });
 
-    // cart.map((produto) => {
-    //   return <Carrinho
-    //     quantidade={produto.quantidade}
-    //     />
-    // })
-  
-   
-    
-
     const usuarioComponentes = this.state.produtos
-      .filter(produto => {
-        return produto.nome.toLowerCase().includes(this.state.query.toLocaleLowerCase())
+      .filter((produto) => {
+        return produto.nome
+          .toLowerCase()
+          .includes(this.state.query.toLocaleLowerCase());
       })
-      .filter(produto => {
-        return this.state.precoMinimo === "" || produto.preco >= this.state.precoMinimo
+      .filter((produto) => {
+        return (
+          this.state.precoMinimo === "" ||
+          produto.preco >= this.state.precoMinimo
+        );
       })
-      .filter(produto => {
-        return this.state.precoMaximo === "" || produto.preco <= this.state.precoMaximo
+      .filter((produto) => {
+        return (
+          this.state.precoMaximo === "" ||
+          produto.preco <= this.state.precoMaximo
+        );
       })
       .sort((atualProduto, proximoProduto) => {
         switch (this.state.parametroNome) {
           case "nome":
-            return this.state.ordenar * atualProduto.nome.localeCompare(proximoProduto.nome)
+            return (
+              this.state.ordenar *
+              atualProduto.nome.localeCompare(proximoProduto.nome)
+            );
           default:
-            return this.state.ordenar * (atualProduto.preco - proximoProduto.preco)
+            return (
+              this.state.ordenar * (atualProduto.preco - proximoProduto.preco)
+            );
         }
-      })
-      
-      // const Carro = this.state.cart.map((produto) => {
-      //   console.log(produto.nome)
-      //   return (
-          
-      //     <Carrinho
-      //       cart={this.state.cart}
-      //       abreLista={this.abreListaDeCompras}
-      //       sideBar={this.state.sidebar}
-      //       id={produto.id}
-      //       quantidade={this.state.quantidade}
-      //       removerDoCarrinho={this.removerCarrinho}
-      //       nome={produto.nome}
-      //       preco={produto.preco}
-      //     />
-      //   );
-        
-      // });
-
+      });
 
     return (
       <div className="App">
         <ContainerHeader>
           <Header />
-           {/* <div>{Carro}</div> */}
-           
-             {/* <Carrinho
+
+          <Carrinho
             cart={this.state.cart}
+            removerDoCarrinho={this.removerCarrinho}
             abreLista={this.abreListaDeCompras}
             sideBar={this.state.sidebar}
-            id={this.state.cart.id}
-            quantidade={this.state.quantidade}
-            removerDoCarrinho={this.removerCarrinho}
-            nome={this.state.cart.nome}
-            preco={this.state.cart.preco}
-          />  */}
-          <Carrinho
-          cart={this.state.cart}
-          removerDoCarrinho={this.removerCarrinho}
-          abreLista={this.abreListaDeCompras}
-          sideBar={this.state.sidebar}
-          totalValue={this.getTotalValue()}
-          
-
+            totalValue={this.getTotalValue()}
           />
-         
-
-
         </ContainerHeader>
-          <Filtros
+        <Filtros
           query={this.state.query}
           listaAtualizada={this.listaAtualizada}
           precoMinimo={this.state.precoMinimo}
@@ -334,7 +244,7 @@ getTotalValue = () => {
           listaParametroNome={this.listaParametroNome}
           ordenar={this.state.ordenar}
           listaOrdenada={this.listaOrdenada}
-          />
+        />
 
         <div className="containerProdutos">{cardComponentes}</div>
 

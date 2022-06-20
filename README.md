@@ -14,7 +14,7 @@ Nosso projeto foi pensado para conciliar o design com a praticidade, facilitando
 - Realizar uma busca direta digitando o nome do produto
 - Filtrar a faixa de preço dos produtos pelo valor mínimo e valor máximo
 ## Link do Surge
-- https://lostinspace-ecommerce.surge.sh/
+- https://spectacular-side.surge.sh/
 
 ## Prints
 

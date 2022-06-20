@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import iconeCarrinho from "../../img/icone-carrinho.png";
+import lixeira from "../../img/produtos/lixeira.svg"
 
 const IconeCarrinho = styled.img`
   width: 80px;
@@ -42,27 +43,42 @@ const ItenSidebar = styled.div`
   padding: 10px;
 `
 
-class Carrinho extends React.Component {
-  
+const BotaoRemover = styled.button`
+  width: 20px;
+  background:url(${lixeira});
+  border: none;
+`
 
+class Carrinho extends React.Component {
+ 
   render() {
+
     return (
       <div>
-        <BotaoCarrinho onClick={this.props.abreLista}>
+         <BotaoCarrinho onClick={this.props.abreLista}>
           <IconeCarrinho src={iconeCarrinho} alt="Icone do Carrinho" />
-          <h3>Carrinho {this.props.quantidade}</h3>
+              <h3>Carrinho {this.props.cart.length}</h3>
         </BotaoCarrinho>
         <SideBar tipo={this.props.sideBar}>
-          {this.props.quantidade > 0 ? (
-            <ItenSidebar>
-              <p>{this.props.quantidade}x</p>
-              <p>{this.props.nomeDoProduto}</p>
-              <button onClick={this.props.removerDoCarrinho}>Remover do Carrinho</button>
+        
+          
+        {this.props.cart.map((produto)=>{
+          return(
+            <ItenSidebar key={this.props.id}>
+              <p>{produto.quantidade}x</p>
+              <p>{produto.nome}</p>
+              <p>{produto.preco}</p>
+              <BotaoRemover onClick={()=>this.props.removerDoCarrinho(produto.id)}></BotaoRemover>
             </ItenSidebar>
-          ) : (
-            ""
-          )}
+             )
+           })}
+           
+           <div>
+          <hr/>
+          <p>Valor total: R${this.props.totalValue}</p>
+        </div>
         </SideBar>
+       
       </div>
     );
   }

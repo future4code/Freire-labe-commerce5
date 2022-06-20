@@ -28,12 +28,13 @@ const SideBar = styled.div`
   }};
   position: absolute;
   top: 110px;
+  right:5px;
   width: 300px;
   height: 400px;
   background-color: #000000aa;
   border-radius: 8px;
   @media (max-width: 1200px) {
-    right: 0px;
+    right: 5px;
   } ;
 `;
 

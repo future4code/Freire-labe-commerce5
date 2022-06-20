@@ -29,9 +29,9 @@ class Footer extends React.Component {
         
         <ContainerFooter>
             <RedesSociais>
-                <img src={Insta} />
-                <img src={Face} />
-                <img src={Twitter} />
+                <img src={Insta} alt="icone instagram"/>
+                <img src={Face} alt="icone facebook"/>
+                <img src={Twitter} alt="icone twitter"/>
             </RedesSociais>
           <h5>© 2022 - NossaLoja Co.® Inc. Todos os direitos reservados.</h5>
         </ContainerFooter>

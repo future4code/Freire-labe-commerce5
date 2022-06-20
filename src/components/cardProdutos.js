@@ -19,7 +19,7 @@ const Imagem = styled.img`
 const Texto = styled.p`
   margin-bottom: 10px;
   font-size: 1.5em;
-`
+`;
 
 const BotaoAdc = styled.button`
   color: white;
@@ -30,33 +30,34 @@ const BotaoAdc = styled.button`
   width: 150px;
   height: 30px;
   &:hover {
-  transform: scale(1.1);
-  box-shadow: 10px -1px 60px #168fd0;
-  box-shadow: -3px -1px 20px #2a617e;
-  cursor: pointer;}
-
-`
+    transform: scale(1.1);
+    box-shadow: 10px -1px 60px #168fd0;
+    box-shadow: -3px -1px 20px #2a617e;
+    cursor: pointer;
+  }
+`;
 
 class CardProdutos extends React.Component {
-
-  // adicionarCarrinho = () => {
-  //   this.setState({ quantidade: this.state.quantidade + 1 });
-  //   console.log(this.state.quantidade);
-  // };
-
-
   render() {
-   
     return (
       <ContainerCard>
         <Imagem src={this.props.foto} alt="" />
         <div>
           <p>{this.props.nome}</p>
           <p>R${this.props.preco},00</p>
-          <BotaoAdc onClick={()=> this.props.botao (this.props.id,this.props.nome,this.props.preco,this.props.foto)}>
+          <BotaoAdc
+            onClick={() =>
+              this.props.botao(
+                this.props.id,
+                this.props.nome,
+                this.props.preco,
+                this.props.foto
+              )
+            }
+          >
             Adicionar ao carrinho
           </BotaoAdc>
-          </div>
+        </div>
       </ContainerCard>
     );
   }

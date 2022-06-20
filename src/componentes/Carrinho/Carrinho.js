@@ -32,8 +32,8 @@ const SideBar = styled.div`
   height: 400px;
   background-color: #000000aa;
   border-radius: 8px;
-  @media (max-width: 1200px) {
-    right: 0px;
+  @media (max-width: 1440px) {
+   right: 5px
   } ;
 `;
 
@@ -63,7 +63,7 @@ class Carrinho extends React.Component {
               <ItenSidebar key={this.props.id}>
                 <p>{produto.quantidade}x</p>
                 <p>{produto.nome}</p>
-                <p>{produto.preco}</p>
+                <p>R${produto.preco},00</p>
                 <BotaoRemover
                   onClick={() => this.props.removerDoCarrinho(produto.id)}
                 ></BotaoRemover>

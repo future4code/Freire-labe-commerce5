@@ -27,7 +27,7 @@ class Header extends React.Component {
     return (
       <Container>
           <ImagemLogo src={Logo} />
-        <Carrinho />
+          
       </Container>
     );
   }

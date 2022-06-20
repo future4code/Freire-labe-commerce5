@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ContainerCard = styled.div`
   display: grid;
   justify-items: center;
-  width: 25vw;
+  width: 20vw;
   height: 40vh;
   padding: 20px;
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -43,8 +43,8 @@ class CardProdutos extends React.Component {
       <ContainerCard>
         <Imagem src={this.props.foto} alt="" />
         <div>
-          <p>{this.props.nome}</p>
-          <p>R${this.props.preco},00</p>
+          < Texto>{this.props.nome}</ Texto>
+          < Texto>R${this.props.preco},00</ Texto>
           <BotaoAdc
             onClick={() =>
               this.props.botao(

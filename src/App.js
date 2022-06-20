@@ -84,6 +84,8 @@ class App extends React.Component {
       (produto) => {
         if (produto.id === id) {
           return produto;
+        }else{
+          return produto
         }
       }
     );
@@ -176,18 +178,7 @@ class App extends React.Component {
   };
 
   render() {
-    const cardComponentes = this.state.produtos.map((produto) => {
-      return (
-        <CardProdutos
-          id={produto.id}
-          nome={produto.nome}
-          preco={produto.preco}
-          foto={produto.foto}
-          botao={this.adicionarCarrinho}
-        />
-      );
-    });
-
+ 
     const usuarioComponentes = this.state.produtos
       .filter((produto) => {
         return produto.nome
@@ -218,7 +209,20 @@ class App extends React.Component {
               this.state.ordenar * (atualProduto.preco - proximoProduto.preco)
             );
         }
-      });
+      })
+
+      .map((produto) => {
+        
+
+        return <CardProdutos
+          key={produto.id}
+          id={produto.id}
+          nome={produto.nome}
+          preco={produto.preco}
+          foto={produto.foto}
+          botao={this.adicionarCarrinho}
+        />
+      })
 
     return (
       <div className="App">
@@ -246,7 +250,7 @@ class App extends React.Component {
           listaOrdenada={this.listaOrdenada}
         />
 
-        <div className="containerProdutos">{cardComponentes}</div>
+        <div className="containerProdutos">{usuarioComponentes}</div>
 
         <Footer />
       </div>

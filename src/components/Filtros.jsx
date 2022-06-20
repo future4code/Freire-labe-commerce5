@@ -77,7 +77,7 @@ export function Filtros(props) {
     />
 
     <span>
-      <label for="sort">Ordenar: </label>
+      <label htmlFor="sort">Ordenar: </label>
       <Select
         name="sort"
         value={props.parametroNome}
